@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8425B738274EB4F400BF4466 /* Statistics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8425B737274EB4F400BF4466 /* Statistics.swift */; };
 		84504670274AC0A7006E7C5E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8450466F274AC0A7006E7C5E /* AppDelegate.swift */; };
 		84504672274AC0A7006E7C5E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84504671274AC0A7006E7C5E /* ViewController.swift */; };
 		84504674274AC0A8006E7C5E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 84504673274AC0A8006E7C5E /* Assets.xcassets */; };
@@ -18,7 +19,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		8450466C274AC0A7006E7C5E /* SingleChannel.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; name = SingleChannel.app; path = /Users/admin/Documents/GitHub/SingleChannel/SingleChannel/build/Debug/SingleChannel.app; sourceTree = "<absolute>"; };
+		8425B736274E9F8600BF4466 /* SingleChannel.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SingleChannel.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		8425B737274EB4F400BF4466 /* Statistics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Statistics.swift; sourceTree = "<group>"; };
 		8450466F274AC0A7006E7C5E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		84504671274AC0A7006E7C5E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		84504673274AC0A8006E7C5E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -46,6 +48,7 @@
 			children = (
 				8450467E274AC16C006E7C5E /* Model */,
 				8450466E274AC0A7006E7C5E /* SingleChannel */,
+				8425B736274E9F8600BF4466 /* SingleChannel.app */,
 			);
 			sourceTree = "<group>";
 		};
@@ -68,6 +71,7 @@
 				84FA4304274AC25B00866672 /* Emulation.swift */,
 				84FA4301274AC20E00866672 /* Node.swift */,
 				84FA4300274AC20E00866672 /* Request.swift */,
+				8425B737274EB4F400BF4466 /* Statistics.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -89,7 +93,7 @@
 			);
 			name = SingleChannel;
 			productName = SingleChannel;
-			productReference = 8450466C274AC0A7006E7C5E /* SingleChannel.app */;
+			productReference = 8425B736274E9F8600BF4466 /* SingleChannel.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -142,6 +146,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8425B738274EB4F400BF4466 /* Statistics.swift in Sources */,
 				84504672274AC0A7006E7C5E /* ViewController.swift in Sources */,
 				84FA4302274AC20E00866672 /* Request.swift in Sources */,
 				84504670274AC0A7006E7C5E /* AppDelegate.swift in Sources */,
