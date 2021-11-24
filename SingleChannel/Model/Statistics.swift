@@ -8,8 +8,8 @@
 import Foundation
 
 class Statistics {
-  var overallQueueLength: Int = 0
-  var overallSystemLength: Int = 0
-  var overallQueueTime: Double = 0
-  var overallSystemTime: Double = 0
+    var overallQueueLength: Int = 0
+    var overallSystemLength: Int = 0
+    var overallQueueTime: Double = 0
+    var overallSystemTime: Double = 0
 }

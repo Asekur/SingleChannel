@@ -800,6 +800,12 @@
                             <constraint firstItem="yME-K1-yZM" firstAttribute="centerX" secondItem="lgB-qr-VZ3" secondAttribute="centerX" id="yJH-RL-2Ma"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="amountChannelsTextField" destination="dcG-Nk-Hif" id="ufa-9e-YFx"/>
+                        <outlet property="lambdaTextField" destination="KQY-LC-gQ2" id="PBT-q0-jPt"/>
+                        <outlet property="muTextField" destination="lgB-qr-VZ3" id="xUn-Vq-hav"/>
+                        <outlet property="resultTextView" destination="QnW-En-msq" id="gEl-KP-jdb"/>
+                    </connections>
                 </viewController>
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>

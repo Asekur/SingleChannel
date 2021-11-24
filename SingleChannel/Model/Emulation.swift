@@ -18,6 +18,10 @@ class Emulation {
         self.mu = mu
     }
     
+    func next(lambda: Double) -> Double {
+        return log(1 - Double.random(in: 0..<1)) / (-1 * lambda)
+    }
+    
     func emulate(ticks: Int) -> Statistics {
         let stats = Statistics()
 
@@ -34,30 +38,30 @@ class Emulation {
                 nextTickRequest = Double(tick) + next(lambda: lambda)
             }
             
-            for indexNode in 4...6 {
+            for indexNode in 3...5 {
                 let node = nodes[indexNode]
                 let emptyQueue = nodes[indexNode - Constants.amountChannels].requests.isEmpty
 
                 // Reverse
+                if (Double(tick) >= nextChannelWork[indexNode - Constants.amountChannels] && node.isFull()) {
+                    stats.overallSystemTime += node.requests[0].endLifeTime(removeTime: Double(tick))
+                    node.requests.removeAll()
+                }
+                
                 if !node.isFull() && !emptyQueue {
                     let req = nodes[indexNode - Constants.amountChannels].requests.removeFirst()
                     stats.overallQueueTime += req.endQueueTime(exitTime: Double(tick))
                     node.requests.append(req)
-                    nextChannelWork[indexNode - Constants.amountChannels - 1] = Double(tick) + next(lambda: mu)
-                }
-
-                if (Double(tick) >= nextChannelWork[indexNode - Constants.amountChannels - 1] && node.isFull()) {
-                    stats.overallSystemTime += node.requests[0].endLifeTime(removeTime: Double(tick))
-                    node.requests.removeAll()
+                    nextChannelWork[indexNode - Constants.amountChannels] = Double(tick) + next(lambda: mu)
                 }
             }
 
-            for indexNode in 1...3 {
+            for indexNode in 0..<Constants.amountChannels {
                 let node = nodes[indexNode]
                 stats.overallQueueLength += node.requests.count
             }
 
-            for indexNode in 1...6 {
+            for indexNode in 0...5 {
                 let node = nodes[indexNode]
                 stats.overallSystemLength += node.requests.count
             }

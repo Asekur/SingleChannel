@@ -9,5 +9,5 @@ import Foundation
 
 struct Constants {
     static let n = 150000
-    static let amountChannels = 3
+    static var amountChannels = 3
 }

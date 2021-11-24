@@ -9,15 +9,24 @@ import Cocoa
 
 class ViewController: NSViewController {
 
+    @IBOutlet weak var amountChannelsTextField: NSTextField!
+    @IBOutlet weak var lambdaTextField: NSTextField!
+    @IBOutlet weak var muTextField: NSTextField!
+    @IBOutlet var resultTextView: NSTextView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
     }
 
+//    func clearValues() {
+//        Statistics.overallQueueLength = 0
+//        Statistics.overallQueueTime = 0
+//        Statistics.overallSystemLength = 0
+//        Statistics.overallSystemTime = 0
+//    }
+    
     @IBAction func generateClicked(_ sender: Any) {
         let nodes = [
-            Node(isQueue: false),
             Node(isQueue: true),
             Node(isQueue: true),
             Node(isQueue: true),
@@ -26,13 +35,19 @@ class ViewController: NSViewController {
             Node(isQueue: false)
         ]
 
-        let emulation = Emulation(nodes: nodes, lambda: 12.0 / 60, mu: 4.5 / 60)
+        Constants.amountChannels = amountChannelsTextField.integerValue == 0 ? 3 : amountChannelsTextField.integerValue
+        let emulation = Emulation(nodes: nodes,
+            lambda: lambdaTextField.doubleValue / 60,
+            mu: muTextField.doubleValue / 60)
         let stats = emulation.emulate(ticks: Constants.n)
-        print("Average queue lenght \(Double(stats.overallQueueLength) / Double(Constants.n))")
-        print("Average system lenght \(Double(stats.overallSystemLength) / Double(Constants.n))")
-        print("Average queue time \(((Double(stats.overallQueueTime) / 60.0) / Double(Constants.n)) )")
-        print("Average system time \(((Double(stats.overallSystemTime)  / 60.0) / Double(Constants.n)))")
-        print("Ended")
+        
+        resultTextView.string =
+                "Средняя длина системы \n\(Double(stats.overallSystemLength) / Double(Constants.n))\n" +
+                "Средняя длина очереди \n\(Double(stats.overallQueueLength) / Double(Constants.n))\n" +
+                "Среднее время заявки в очереди \n\(((Double(stats.overallQueueTime) / 60.0) / Double(Constants.n)))\n" +
+                "Среднее время заявки в системе \n\(((Double(stats.overallSystemTime)  / 60.0) / Double(Constants.n)))"
+                
+        //clearValues()
     }
 }
 
