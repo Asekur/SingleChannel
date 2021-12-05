@@ -8,6 +8,6 @@
 import Foundation
 
 struct Constants {
-    static let n = 150000
+    static let n = 1000000
     static var amountChannels = 3
 }

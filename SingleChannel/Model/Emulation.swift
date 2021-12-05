@@ -31,29 +31,33 @@ class Emulation {
         var nextQueue = 0
         
         for tick in 0..<ticks {
-            if (Double(tick) >= nextTickRequest) {
-                let request = Request(creationTime: tick)
-                nodes[nextQueue % Constants.amountChannels].requests.append(request)
-                nextQueue += 1
-                nextTickRequest = Double(tick) + next(lambda: lambda)
-            }
-            
             for indexNode in 3...5 {
                 let node = nodes[indexNode]
                 let emptyQueue = nodes[indexNode - Constants.amountChannels].requests.isEmpty
 
                 // Reverse
-                if (Double(tick) >= nextChannelWork[indexNode - Constants.amountChannels] && node.isFull()) {
-                    stats.overallSystemTime += node.requests[0].endLifeTime(removeTime: Double(tick))
-                    node.requests.removeAll()
-                }
-                
                 if !node.isFull() && !emptyQueue {
                     let req = nodes[indexNode - Constants.amountChannels].requests.removeFirst()
                     stats.overallQueueTime += req.endQueueTime(exitTime: Double(tick))
+                    stats.totalQueueDone += 1
                     node.requests.append(req)
                     nextChannelWork[indexNode - Constants.amountChannels] = Double(tick) + next(lambda: mu)
                 }
+                
+                if (Double(tick) >= nextChannelWork[indexNode - Constants.amountChannels] && node.isFull()) {
+                    stats.overallSystemTime += node.requests[0].endLifeTime(removeTime: Double(tick))
+                    node.requests.removeAll()
+                    stats.totalRequestDone += 1
+                }
+            }
+            
+            if (Double(tick) >= nextTickRequest) {
+                if nodes[nextQueue % Constants.amountChannels].requests.count < 6 {
+                    let request = Request(creationTime: tick)
+                    nodes[nextQueue % Constants.amountChannels].requests.append(request)
+                }
+                nextQueue += 1
+                nextTickRequest = Double(tick) + next(lambda: lambda)
             }
 
             for indexNode in 0..<Constants.amountChannels {

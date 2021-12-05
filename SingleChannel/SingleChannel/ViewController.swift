@@ -17,13 +17,6 @@ class ViewController: NSViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
     }
-
-//    func clearValues() {
-//        Statistics.overallQueueLength = 0
-//        Statistics.overallQueueTime = 0
-//        Statistics.overallSystemLength = 0
-//        Statistics.overallSystemTime = 0
-//    }
     
     @IBAction func generateClicked(_ sender: Any) {
         let nodes = [
@@ -44,10 +37,8 @@ class ViewController: NSViewController {
         resultTextView.string =
                 "Средняя длина системы \n\(Double(stats.overallSystemLength) / Double(Constants.n))\n" +
                 "Средняя длина очереди \n\(Double(stats.overallQueueLength) / Double(Constants.n))\n" +
-                "Среднее время заявки в очереди \n\(((Double(stats.overallQueueTime) / 60.0) / Double(Constants.n)))\n" +
-                "Среднее время заявки в системе \n\(((Double(stats.overallSystemTime)  / 60.0) / Double(Constants.n)))"
-                
-        //clearValues()
+                "Среднее время заявки в очереди \n\((Double(stats.overallQueueLength) / lambdaTextField.doubleValue) / Double(Constants.n))\n" +
+                "Среднее время заявки в системе \n\((Double(stats.overallSystemLength) / lambdaTextField.doubleValue) / Double(Constants.n))"
     }
 }
 

@@ -12,4 +12,6 @@ class Statistics {
     var overallSystemLength: Int = 0
     var overallQueueTime: Double = 0
     var overallSystemTime: Double = 0
+    var totalRequestDone: Double = 0
+    var totalQueueDone: Double = 0
 }
